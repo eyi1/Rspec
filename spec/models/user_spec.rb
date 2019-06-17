@@ -42,20 +42,25 @@ require 'rails_helper'
 #     # it "is not valid without a end_date"
 #   end
 
-# RSpec.describe User, :type => :model do
-#     subject { described_class.new(name: "Anything") }
+RSpec.describe User, :type => :model do
+    subject { described_class.new(name: "Anything") }
   
-#     it "is valid with valid attributes" do
-#       #subject.name = "Anything"
-#       expect(subject).to be_valid
-#     end
+    it "is valid with valid attributes" do
+      #subject.name = "Anything"
+      expect(subject).to be_valid
+    end
   
-#     it "is not valid without a name" do
-#       subject.name = nil
-#       expect(subject).to_not be_valid
-#     end
-# end
+    it "is not valid without a name" do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end
 
-RSpec.describe User, type: :model do
-    it { should validate_presence_of :name }
-  end
+    describe "Associations" do
+        it { should have_many(:posts) }
+    end
+end
+
+# RSpec.describe User, type: :model do
+#     it { should validate_presence_of :name }
+#   end
+
